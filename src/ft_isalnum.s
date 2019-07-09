@@ -1,33 +1,17 @@
 section .text
 	global _ft_isalnum
+	extern _ft_isalpha
+	extern _ft_isdigit
 
 _ft_isalnum:
-	call _first_digit
-	
-	
-_first_digit:
-	cmp rdi,60o
-	jge _second_digit
-	jl _false
+	enter 0,0	
+	call _ft_isalpha
+	cmp rax,1
+	je _end
 
-_second_digit:
-	cmp rdi,71o
-	jle _true
-	jg _first_alpha
+_test:
+	call _ft_isdigit
 
-_first_alpha:
-	cmp rdi, 101o
-	jl _false
-	jge _second_alpha
-
-_second_alpha:
-	cmp rdi,172o
-	jg _false
-	jle _true
-
-_true:
-	mov rax,1
-	ret
-_false:	
-	mov rax,0
+_end:
+	leave
 	ret

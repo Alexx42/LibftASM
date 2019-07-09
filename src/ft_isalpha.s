@@ -10,6 +10,16 @@ _first_condition:
 	jl _false
 
 _second_condition:
+	cmp rdi,132o
+	jg _or_first
+	jle _true
+
+_or_first:
+	cmp rdi,141o
+	jge _or_second
+	jl _false
+
+_or_second:
 	cmp rdi,172o
 	jg _false
 	jle _true
