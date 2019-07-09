@@ -6,7 +6,7 @@ _ft_memset:
 	mov rax,rsi
 	mov rcx, rdx
 	cld
-	repne stosb
+	rep stosb
 
 _end:
 	pop rax

@@ -5,7 +5,7 @@ _ft_memcpy:
 	push rdi
 	mov rcx,rdx
 	cld
-	repne movsb
+	rep movsb
 
 _end:
 	pop rax

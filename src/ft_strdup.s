@@ -9,6 +9,7 @@ _ft_strdup:
 	push rdi
 	call _ft_strlen
 	push rax
+	inc rax
 	mov rdi,rax
 	call _malloc
 	cmp rax,0
@@ -17,6 +18,7 @@ _ft_strdup:
 	pop rdx
 	pop rsi
 	call _ft_memcpy
+	mov byte [rax + rdx],0
 
 _end:
 	leave

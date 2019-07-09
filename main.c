@@ -22,7 +22,6 @@ void	test_bzero()
 {
 	char	*ptr1 = strdup("Hello\n");
 	char	*ptr2 = strdup("Hello\n");
-	(void)ptr1;
 	printf("-------TEST BZERO-------\n");
 	ft_bzero(ptr1, strlen(ptr1));
 	bzero(ptr2, strlen(ptr2));
@@ -343,6 +342,10 @@ void	test_strdup()
 		printf(GREEN "Passed\n" RESET);
 	else
 		printf(RED "Failed\n" RESET);
+	free(s1);
+	free(s2);
+	free(s3);
+	free(s4);
 }
 
 #include <fcntl.h>
@@ -357,6 +360,79 @@ void	test_cat()
 	ft_cat(fd);
 	ft_putstr(RESET"Test [1]: (negative fd) -> \n");
 	ft_cat(-78);
+}
+
+void	test_max()
+{
+	printf("\n-------TEST MAX-------\n");
+	ft_putstr(RESET"Test [0]: (two positive numbers fd) -> ");
+	if (ft_max(4096, 42) == 4096)
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+	ft_putstr(RESET"Test [1]: (two negative numbers fd) -> ");
+	if (ft_max(-7, -5) == -5)
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+}
+
+void	test_min()
+{
+	printf("\n-------TEST MIN-------\n");
+	ft_putstr(RESET"Test [0]: (two positive numbers fd) -> ");
+	if (ft_min(4096, 42) == 42)
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+	ft_putstr(RESET"Test [1]: (two negative numbers fd) -> ");
+	if (ft_min(-7, -5) == -7)
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+}
+
+void	test_memalloc()
+{
+	printf("\n-------TEST MEMALLOC-------\n");
+	char *test = ft_memalloc(12);
+	int failed = 0;
+	ft_putstr(RESET"Test [0]: (basic test) -> ");
+	for (int i = 0; test[i]; i++) {
+		printf("%c\n", test[i]);
+		if (test[i] != 0)
+			failed = 1;
+	}
+	if (!failed)
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+	free(test);
+}
+
+void	test_strcmp()
+{
+	printf("\n-------TEST STRCMP-------\n");
+	ft_putstr(RESET"Test [0]: (string not equal) -> ");
+	if ((ft_strcmp("hello", "hi") == strcmp("hello", "hi")))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+	ft_putstr(RESET"Test [1]: (string equal) -> ");
+	if ((ft_strcmp("hello", "hello") == strcmp("hello", "hello")))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+	ft_putstr(RESET"Test [2]: (string empty) -> ");
+	if ((ft_strcmp("", "") == strcmp("", "")))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+	ft_putstr(RESET"Test [2]: (not equal harder) -> ");
+	if ((ft_strcmp("qwertyuioppoiuytrewq", "qwertyuioppoiuyrewq") == strcmp("qwertyuioppoiuytrewq", "qwertyuioppoiuyrewq")))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
 }
 
 int		main()
@@ -375,6 +451,10 @@ int		main()
 	test_memset();
 	test_memcpy();
 	test_strdup();
-	test_cat();
+	//test_cat();
+	test_max();
+	test_min();
+	test_memalloc();
+	test_strcmp();
 	return (0);
 }
