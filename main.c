@@ -267,6 +267,98 @@ void	test_puts()
 		printf(RED "Failed\n" RESET);
 }
 
+void	test_strlen()
+{
+	printf("\n-------TEST STRLEN-------\n");
+	ft_putstr(RESET"Test [0]: (basic string) -> ");
+	if (ft_strlen("Hello World") == strlen("Hello World"))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+	ft_putstr(RESET"Test [1]: (empty string) -> ");
+	if (ft_strlen("") == strlen(""))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+}
+
+void	test_memset()
+{
+	printf("\n-------TEST MEMSET-------\n");
+	char ptr[] = "Hello";
+	char ptr2[] = "Hello";
+
+	memset(ptr, 'c', 3);
+	ft_memset(ptr2, 'c', 3);
+	ft_putstr(RESET"Test [0]: (basic string) -> ");
+	if (!strcmp(ptr, ptr2))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+	char ptr3[] = "";
+	char ptr4[] = "";
+	memset(ptr3, 's', 0);
+	ft_memset(ptr4, 's', 0);
+	ft_putstr(RESET"Test [1]: (emptry string) -> ");
+	if (!strcmp(ptr3, ptr4))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+}
+
+void	test_memcpy()
+{
+	char ptr[] = "Hello";
+	char ptr2[] = "Salut";
+
+	printf("\n-------TEST MEMCPY-------\n");
+	ft_memcpy(ptr, ptr2, 3);
+	ft_putstr(RESET"Test [0]: (basic string) -> ");
+	if (!strcmp(ptr, "Sallo"))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+	ft_memcpy(ptr, "", 5);
+	ft_putstr(RESET"Test [1]: (empty string) -> ");
+	if (!strcmp(ptr, ""))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+}
+
+void	test_strdup()
+{
+	printf("\n-------TEST STRDUP-------\n");
+	char *s1 = ft_strdup("Hello World");
+	char *s2 = strdup("Hello World");
+	ft_putstr(RESET"Test [0]: (basic string) -> ");
+	if (!strcmp(s1, s2))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+	char *s3 = ft_strdup("");
+	char *s4 = strdup("");
+	ft_putstr(RESET"Test [1]: (empty string) -> ");
+	if (!strcmp(s3, s4))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+}
+
+#include <fcntl.h>
+
+void	test_cat()
+{
+	printf("\n-------TEST CAT-------\n");
+	ft_putstr(RESET"Test [0]: (read from stdin) -> \n");
+	ft_cat(0);
+	ft_putstr(RESET"Test [1]: (read from a file) -> \n");
+	int fd = open("src/ft_isdigit.s", O_RDONLY);
+	ft_cat(fd);
+	ft_putstr(RESET"Test [1]: (negative fd) -> \n");
+	ft_cat(-78);
+}
+
 int		main()
 {
 	test_bzero();
@@ -279,5 +371,10 @@ int		main()
 	test_toupper();
 	test_tolower();
 	test_puts();
+	test_strlen();
+	test_memset();
+	test_memcpy();
+	test_strdup();
+	test_cat();
 	return (0);
 }
