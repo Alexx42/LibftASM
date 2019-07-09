@@ -9,7 +9,7 @@ CFLAGS		= -Wall -Werror -Wextra
 SRC_DIR		= src/
 OBJ_DIR		= obj/
 
-SRCS		= ft_bzero.s ft_strcat.s ft_isalpha.s ft_isdigit.s ft_isalnum.s ft_isascii.s ft_isprint.s ft_toupper.s ft_tolower.s
+SRCS		= ft_bzero.s ft_strcat.s ft_isalpha.s ft_isdigit.s ft_isalnum.s ft_isascii.s ft_isprint.s ft_toupper.s ft_tolower.s ft_puts.s
 OBJ			= $(addprefix $(OBJ_DIR), $(SRCS:.s=.o))
 
 

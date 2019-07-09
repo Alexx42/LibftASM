@@ -252,6 +252,21 @@ void	test_tolower()
 		printf(RED "Failed\n" RESET);
 }
 
+void	test_puts()
+{
+	printf("\n-------TEST PUTS-------\n");
+	ft_putstr(RESET"Test [0]: (print basic string) ->\n");
+	if (ft_puts("Hello World") == puts("Hello World"))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+	ft_putstr(RESET"Test [1]: (print null string) ->\n");
+	if (ft_puts(NULL) == puts(NULL))
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+}
+
 int		main()
 {
 	test_bzero();
@@ -263,5 +278,6 @@ int		main()
 	test_isprint();
 	test_toupper();
 	test_tolower();
+	test_puts();
 	return (0);
 }
