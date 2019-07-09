@@ -2,9 +2,9 @@ section .text
 	global _ft_abs
 
 _ft_abs:
-	test edi,edi
-	js _neg
-	jmp _end
+	cmp edi,0
+	jl _neg
+	jge _end
 
 _neg:
 	neg rdi

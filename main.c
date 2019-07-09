@@ -439,7 +439,6 @@ void	test_abs()
 {
 	printf("\n-------TEST ABS-------\n");
 	ft_putstr(RESET"Test [0]: (negative value) -> ");
-	printf("%d\n", ft_abs(-5));
 	if (ft_abs(-5) == 5)
 		printf(GREEN "Passed\n" RESET);
 	else
