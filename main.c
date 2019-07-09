@@ -435,6 +435,22 @@ void	test_strcmp()
 		printf(RED "Failed\n" RESET);
 }
 
+void	test_abs()
+{
+	printf("\n-------TEST ABS-------\n");
+	ft_putstr(RESET"Test [0]: (negative value) -> ");
+	printf("%d\n", ft_abs(-5));
+	if (ft_abs(-5) == 5)
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+	ft_putstr(RESET"Test [1]: (positive value) -> ");
+	if (ft_abs(5) == 5)
+		printf(GREEN "Passed\n" RESET);
+	else
+		printf(RED "Failed\n" RESET);
+}	
+
 int		main()
 {
 	test_bzero();
@@ -456,5 +472,6 @@ int		main()
 	test_min();
 	test_memalloc();
 	test_strcmp();
+	test_abs();
 	return (0);
 }
